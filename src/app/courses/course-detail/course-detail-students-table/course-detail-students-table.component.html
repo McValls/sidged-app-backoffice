@@ -1,0 +1,21 @@
+<table class="table table-striped table-bordered">
+	<thead class="thead-dark">
+		<th scope="col">#</th>
+		<th scope="col">Nombres</th>
+		<th scope="col">Apellido</th>
+		<th scope="col">DNI</th>
+		<th scope="col">Email</th>
+		<th scope="col">Acciones</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let student of students; index as i">
+			<th scope="row">{{i + 1}}</th>
+			<td>{{student.names}}</td>
+			<td>{{student.lastname}}</td>
+			<td>{{student.identificationNumber}}</td>
+			<td>{{student.contactData.emails}}</td>
+			<td><button type="button" class="btn btn-dark btn-sm" (click)="removeStudent(student)">Eliminar de la lista</button></td>
+		</tr>
+	</tbody>
+</table>
+<loading [loading]="loading" [fullScreen]="false"></loading>

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Registro correcto.</h1>
+<div mat-dialog-content>
+  <p>Se ha enviado un correo a la siguiente dirección de correo: {{data.email}}</p>
+  <p>Por favor siga las instrucciones del correo para activar su cuenta.</p>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-success" mat-button [mat-dialog-close]="ok" cdkFocusInitial>Aceptar</button>
+</div>

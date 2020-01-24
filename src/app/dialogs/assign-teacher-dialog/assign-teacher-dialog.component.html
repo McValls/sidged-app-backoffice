@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Asignar docente</h2>
+<div mat-dialog-content>
+	<form [formGroup]="form">
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastnameFilter">Filtrar por Apellido:</label>
+				<input type="text" class="form-control" id="lastnameFilter" formControlName="lastnameFilter" (keyup)="applyFilter()">
+			</div>
+		</div>
+		<div class="form-row">
+			<teachers-table [loading]="loading" [teachers]="filteredTeachers" [action]="getAssignAction()" actionLabel="Asignar"></teachers-table>
+		</div>
+
+		<div mat-dialog-actions>
+		  <button class="btn btn-secondary" mat-button (click)="cancel()" cdkFocusInitial>Cancelar</button>
+		</div>
+	</form>
+</div>

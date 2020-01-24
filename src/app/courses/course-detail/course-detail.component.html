@@ -1,0 +1,38 @@
+<div class="container col-md-12">
+	<h2> Detalle {{getCompleteCourse()}} </h2>
+	<hr>
+  	
+  	<div class="form-group form-centered">
+  		<div class="form-row">
+	  		<h3>Docentes a cargo</h3>
+	  		<hr>
+	  		<div class="col-md-12">
+	  			<course-detail-teachers-table [loading]="loading" [teachers]="teachers" [courseId]="courseId"></course-detail-teachers-table>
+	  		</div>
+	  	</div>
+
+	  	<div class="form-row">
+	  		<h3>Alumnos inscriptos</h3>
+	  		<hr>
+	  		<div class="col-md-12">
+	  			<course-detail-students-table [loading]="loading" [students]="students" [courseId]="courseId"></course-detail-students-table>
+	  		</div>
+	  	</div>
+
+	  	<div class="form-row">
+	  		<div class="col-md-6 left-col">
+		  		<button type="button" class="btn btn-secondary btn-md col-md-6" (click)="backToCourses()">Volver</button>
+		  	</div>
+  			<div class="col-md-6 right-col">
+		  		<button type="button" class="btn btn-success btn-lg col-md-4" (click)="assignTeacher()">Asignar Docente</button>
+		  		<button type="button" class="btn btn-success btn-lg col-md-4" (click)="addStudent()">Agregar Alumno</button>
+		  	</div>
+	  	</div>
+	  	<div class="form-row">
+	  		<div class="col-md-12 right-col" style="padding-top: 40px">
+	  			<button type="button" class="btn btn-danger btn-sm col-sm-2" (click)="deleteCourse()">Borrar curso</button>
+	  		</div>
+	  	</div>
+  	</div>
+
+</div>

@@ -1,0 +1,24 @@
+<div class="container col-md-12">
+	<h2> ABM Cursos </h2>
+	<hr>
+  	
+  	<div class="form-group form-centered">
+  		<div class="form-row">
+	  		<h3>Cursos</h3>
+	  		<hr>
+	  		<div class="col-md-12">
+	  			<courses-table [loading]="loading" [courses]="courses" actionButtonLabel="Ver Detalle" (onActionClicked)="goToDetail($event)"></courses-table>
+	  		</div>
+	  	</div>
+
+	  	<div class="form-row">
+	  		<div class="col-md-6 left-col">
+		  		<button type="button" class="btn btn-secondary btn-md col-md-6" (click)="backToDashboard()">Volver</button>
+		  	</div>
+  			<div class="col-md-6 right-col">
+		  		<button type="button" class="btn btn-success btn-lg col-lg-6" (click)="newCourse()">Nuevo Curso</button>
+		  	</div>
+	  	</div>
+  	</div>
+
+</div>
