@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UserType } from '../../model/user-type';
-import { EditUserDialogComponent } from '../../dialogs/edit-user-dialog/edit-user-dialog.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'users-table',
@@ -12,28 +10,14 @@ export class UsersTableComponent {
 
 	@Input() loading: boolean;
 	@Input() users: Array<any> = new Array();
-	@Input() userType: UserType;
+  @Input() userType: UserType;
+  @Input() actionLabel: string;
+  @Output() onActionClicked: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(public dialog: MatDialog) { }
+  constructor() { }
 
-  public editUser(user) {
-    this.openEditUserDialog(user);
-  }
-
-  private openEditUserDialog(user){
-    let dialogRef = this.dialog.open(EditUserDialogComponent, {
-      width: '600px',
-      data: {user: user, userType: this.userType},
-      disableClose: true,
-      hasBackdrop: true
-    });
-
-    dialogRef.afterClosed().toPromise().then((data) => {
-      user.names = data.names;
-      user.lastname = data.lastname;
-      user.contactData.emails = data.contactData.emails;
-      user.identificationNumber = data.identificationNumber;
-    });
+  actionClickListener(user: any) {
+    this.onActionClicked.emit({data: user, userType: this.userType});
   }
 
 }

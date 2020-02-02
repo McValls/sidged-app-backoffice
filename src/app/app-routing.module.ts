@@ -8,7 +8,7 @@ import { UsersComponent }	from './users/users.component';
 import { CoursesComponent }	from './courses/courses.component';
 import { CourseDetailComponent }	from './courses/course-detail/course-detail.component';
 import { CourseCreateComponent }	from './courses/course-create/course-create.component';
-import { PresentismByCourseComponent }	from './presentism/presentism-by-course.component';
+import { PresentismComponent }	from './presentism/presentism/presentism.component';
 import { AuthGuard } 			from './auth/auth-guard';
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
 		{path: 'dashboard/courses', component: CoursesComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
 		{path: 'dashboard/courses/detail/id/:id/year/:year/shift/:shift/name/:name', component: CourseDetailComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
 		{path: 'dashboard/courses/create', component: CourseCreateComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
-		{path: 'presentism/by-course', component: PresentismByCourseComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}}
+		{path: 'presentism', component: PresentismComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}}
 
 ];
 

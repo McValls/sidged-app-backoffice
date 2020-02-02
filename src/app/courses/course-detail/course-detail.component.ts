@@ -6,7 +6,7 @@ import { Course, Shift } from '../../model/course/course.model';
 import { CoursesService } from '../../services/courses/courses.service';
 import { AssignTeacherDialogComponent } from '../../dialogs/assign-teacher-dialog/assign-teacher-dialog.component';
 import { AddStudentToCourseDialogComponent } from '../../dialogs/add-student-to-course-dialog/add-student-to-course-dialog.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'course-detail',

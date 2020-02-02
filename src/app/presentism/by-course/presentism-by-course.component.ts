@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AnalysisService } from '../services/analysis/analysis.service';
-import { CoursesService } from '../services/courses/courses.service';
-import { Course } from '../model/course/course.model';
-import { PresentType, PercentageByStudentPresent } from '../model/presentism/presentism.model';
+import { Router } from '@angular/router';
+import { AnalysisService } from '../../services/analysis/analysis.service';
+import { CoursesService } from '../../services/courses/courses.service';
+import { Course } from '../../model/course/course.model';
+import { PresentType, PercentageByStudentPresent } from '../../model/presentism/presentism.model';
 
 @Component({
   selector: 'presentism-by-course',
@@ -61,7 +62,8 @@ export class PresentismByCourseComponent implements OnInit {
   	private activeFilters = new Map();
 
   	constructor(private analysisService: AnalysisService,
-  		private coursesService: CoursesService) { }
+  		private coursesService: CoursesService,
+  		private router: Router) { }
 
   	ngOnInit() {
   		this.getAllCourses();
@@ -156,6 +158,10 @@ export class PresentismByCourseComponent implements OnInit {
 			this.courses = coursesToFilter.filter(course => course.year === event.target.value);
 			this.activeFilters.set('filterByYear', true);
 		}
+	}
+
+	backToDashboard() {
+		this.router.navigate(['/dashboard']);
 	}
 
 }

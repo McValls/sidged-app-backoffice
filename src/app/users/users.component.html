@@ -7,7 +7,7 @@
 	  		<h3>Alumnos</h3>
 	  		<hr>
 	  		<div class="col-md-12">
-	  			<users-table [loading]="loadingStudents" [users]="students" userType="STUDENT"></users-table>
+	  			<users-table [loading]="loadingStudents" [users]="students" userType="STUDENT" (onActionClicked)="editUser($event)" actionLabel="Editar"></users-table>
 	  		</div>
 	  	</div>
 
@@ -15,7 +15,7 @@
 	  		<h3>Docentes</h3>
 	  		<hr>
 	  		<div class="col-md-12">
-	  			<users-table [loading]="loadingTeachers" [users]="teachers" userType="TEACHER"></users-table>
+	  			<users-table [loading]="loadingTeachers" [users]="teachers" userType="TEACHER" (onActionClicked)="editUser($event)" actionLabel="Editar"></users-table>
 	  		</div>
 	  	</div>
 

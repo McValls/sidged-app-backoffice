@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   }
 
   openPresentismByCourse() {
-    this.router.navigate(['/presentism/by-course']);
+    this.router.navigate(['/presentism']);
   }
 
 }

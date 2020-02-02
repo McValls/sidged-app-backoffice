@@ -1,7 +1,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatDialogModule} from "@angular/material";
+import { MatDialogModule } from "@angular/material/dialog";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 
@@ -35,7 +35,9 @@ import { CourseDetailTeachersTableComponent } from './courses/course-detail/cour
 import { AddStudentToCourseDialogComponent } from './dialogs/add-student-to-course-dialog/add-student-to-course-dialog.component';
 import { StudentsTableComponent } from './students/students-table/students-table.component';
 import { CourseCreateComponent } from './courses/course-create/course-create.component';
-import { PresentismByCourseComponent } from './presentism/presentism-by-course.component';
+import { PresentismByCourseComponent } from './presentism/by-course/presentism-by-course.component';
+import { PresentismByStudentComponent } from './presentism/by-student/presentism-by-student.component';
+import { PresentismComponent } from './presentism/presentism/presentism.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { PresentismByCourseComponent } from './presentism/presentism-by-course.c
     AddStudentToCourseDialogComponent,
     StudentsTableComponent,
     CourseCreateComponent,
-    PresentismByCourseComponent
+    PresentismByCourseComponent,
+    PresentismByStudentComponent,
+    PresentismComponent
   ],
   imports: [
     BrowserModule,

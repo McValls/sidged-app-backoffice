@@ -16,7 +16,7 @@
 			<td>{{user.names}}</td>
 			<td>{{user.lastname}}</td>
 			<td *ngIf="userType === 'STUDENT'">{{user.identificationNumber}}</td>
-			<td><button type="button" class="btn btn-dark btn-sm" (click)="editUser(user)">Editar</button></td>
+			<td><button type="button" class="btn btn-dark btn-sm" (click)="actionClickListener(user)">{{actionLabel}}</button></td>
 		</tr>
 	</tbody>
 </table>

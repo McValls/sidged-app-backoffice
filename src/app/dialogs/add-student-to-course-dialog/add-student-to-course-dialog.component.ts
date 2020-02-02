@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit, Input} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Student } from '../../model/student/student.model';
 import { CoursesService } from '../../services/courses/courses.service';

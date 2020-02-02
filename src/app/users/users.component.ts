@@ -4,6 +4,9 @@ import { TeachersService } from '../services/teachers/teachers.service';
 import { Student } from '../model/student/student.model';
 import { Teacher } from '../model/teacher/teacher.model';
 import { Router } from '@angular/router';
+import { EditUserDialogComponent } from '../dialogs/edit-user-dialog/edit-user-dialog.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserType } from '../model/user-type';
 
 
 @Component({
@@ -20,7 +23,8 @@ export class UsersComponent implements OnInit {
 
   constructor(private studentsService: StudentsService,
   	private teachersService: TeachersService,
-    private router: Router) { }
+    private router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
   	this.getAllStudents();
@@ -55,5 +59,27 @@ export class UsersComponent implements OnInit {
 
   public backToDashboard(){
     this.router.navigate(['/dashboard']);
+  }
+
+  public editUser($event) {
+    let user = $event.data;
+    let userType = $event.userType;
+    this.openEditUserDialog(user, userType);
+  }
+
+  private openEditUserDialog(user: any, userType: UserType){
+    let dialogRef = this.dialog.open(EditUserDialogComponent, {
+      width: '600px',
+      data: {user: user, userType: userType},
+      disableClose: true,
+      hasBackdrop: true
+    });
+
+    dialogRef.afterClosed().toPromise().then((data) => {
+      user.names = data.names;
+      user.lastname = data.lastname;
+      user.contactData.emails = data.contactData.emails;
+      user.identificationNumber = data.identificationNumber;
+    });
   }
 }

@@ -18,3 +18,9 @@ export enum PresentType {
 	LATE = "LATE",
 	ABSENT = "ABSENT"
 }
+
+export interface PresentismAnalysisData {
+	courseId: number;
+	courseName: string;
+	percentageByStudentPresent: PercentageByStudentPresent[];
+}
