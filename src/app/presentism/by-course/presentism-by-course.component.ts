@@ -57,7 +57,8 @@ export class PresentismByCourseComponent implements OnInit {
   	loading: boolean = false;
   	courses: Array<Course> = new Array<Course>();
   	allCourses: Array<Course> = new Array<Course>();
-  	selectedCourse: Course;
+	selectedCourse: Course;
+	visible = false;  
 
   	private activeFilters = new Map();
 
@@ -70,8 +71,8 @@ export class PresentismByCourseComponent implements OnInit {
   	}
 
   	private getAllCourses(){
-  		this.loading = true;
-  		this.coursesService.getAllCourses()
+		this.loading = true;
+		this.coursesService.getAllCourses()
 			.then((data: Array<Course>) => {
 				this.allCourses = data;
 				this.courses = data;
@@ -79,7 +80,12 @@ export class PresentismByCourseComponent implements OnInit {
 			}, err => {
 				console.log(JSON.stringify(err));
 			});
-  	}
+		}
+	  
+	
+	makeVisible() : void {
+		this.visible = !this.visible;
+	}
 
   	goToAnalysis($event) {
   		this.selectedCourse = $event.data;

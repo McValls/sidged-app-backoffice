@@ -22,5 +22,7 @@ export enum PresentType {
 export interface PresentismAnalysisData {
 	courseId: number;
 	courseName: string;
-	percentageByStudentPresent: PercentageByStudentPresent[];
+	courseYear: number;
+	numberOfClasses: number;
+	percentagesByStudentPresent: PercentageByStudentPresent[];
 }
