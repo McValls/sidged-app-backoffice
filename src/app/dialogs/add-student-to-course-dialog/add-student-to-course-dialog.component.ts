@@ -55,7 +55,7 @@ export class AddStudentToCourseDialogComponent implements OnInit {
       });
     }
 
-    public getAddAction(student: Student) {
+    public getAddAction() {
       return (student:Student) => {
         this.coursesService.addStudent(this.courseId, student);
         this.dialogRef.close(true);

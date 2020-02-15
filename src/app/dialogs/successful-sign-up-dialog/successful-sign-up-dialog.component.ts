@@ -9,6 +9,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class SuccessfulSignUpDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<SuccessfulSignUpDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {}) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 }

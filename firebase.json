@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "public": "dist/my-app",
+    "site": "sidged-bo",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "cleanUrls": true,
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "sidged-bo"
+  },
+  "targets": {
+    "sidged-2019inspt": {
+      "hosting": {
+        "sidged-backoffice": [
+          "sidged-bo"
+        ]
+      }
+    }
+  }
+}

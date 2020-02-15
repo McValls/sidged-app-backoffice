@@ -21,6 +21,8 @@ export class CourseDetailComponent implements OnInit {
 	courseName: string;
 	students: Array<Student>;
   teachers: Array<Teacher>;
+  loading: boolean = false;
+
 
   constructor(private route: ActivatedRoute, private router: Router, private coursesService: CoursesService, private dialog: MatDialog) {
   	this.courseId = this.route.snapshot.params.id;
@@ -30,6 +32,7 @@ export class CourseDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getTeachers();
     this.getStudents();
   }
@@ -38,6 +41,9 @@ export class CourseDetailComponent implements OnInit {
     this.coursesService.getTeachers(this.courseId).then(
       (data: Array<Teacher>) => {
         this.teachers = data;
+        if(this.students != null) {
+          this.loading = false;
+        }
       }, err => {
         console.log("Error getting teachers:" + JSON.stringify(err));
       }
@@ -48,6 +54,9 @@ export class CourseDetailComponent implements OnInit {
     this.coursesService.getStudents(this.courseId).then(
       (data: Array<Student>) => {
         this.students = data;
+        if (this.teachers != null) {
+          this.loading = false;
+        }
       }, err => {
         console.log("Error getting students:" + JSON.stringify(err));
       }
