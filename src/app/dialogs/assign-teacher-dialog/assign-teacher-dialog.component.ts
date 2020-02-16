@@ -62,8 +62,11 @@ export class AssignTeacherDialogComponent implements OnInit {
 
     public getAssignAction() {
       return (teacher:Teacher) => {
-        this.coursesService.assignTeacher(this.courseId, teacher);
-        this.dialogRef.close(true);
+        this.coursesService.assignTeacher(this.courseId, teacher).then(res => {
+          this.dialogRef.close(true);
+        }, err => {
+          alert("No se pudo asignar a este docente al curso solicitado.");
+        });
       }
     }
 

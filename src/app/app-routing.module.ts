@@ -12,6 +12,7 @@ import { PresentismComponent }	from './presentism/presentism/presentism.componen
 import { AuthGuard } 			from './auth/auth-guard';
 
 const routes: Routes = [
+		{path: '', component: LoginComponent},
 		{path: 'login', component: LoginComponent},
 		{path: 'sign-up', component: SignUpComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
 		{path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
