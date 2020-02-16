@@ -10,11 +10,11 @@ export class AnalysisService {
   constructor(private http: HttpClient) { }
 
   getAnalysisDataByCourse(courseId: number) {
-  	return this.http.get<CoursePresentismData>("http://localhost:8080/presentism-data/course/"+courseId);
+  	return this.http.get<CoursePresentismData>("https://sidged-be.herokuapp.com/presentism-data/course/"+courseId);
   }
 
   getAnalysisDataByStudent(userId: number) {
-    return this.http.get<PresentismAnalysisData[]>("http://localhost:8080/presentism-data/student/"+userId+"/year/"+2020);
+    return this.http.get<PresentismAnalysisData[]>("https://sidged-be.herokuapp.com/presentism-data/student/"+userId+"/year/"+2020);
   }
 
 }

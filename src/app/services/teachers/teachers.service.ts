@@ -15,7 +15,7 @@ export class TeachersService {
 
   public getAllTeachers()  {
   	let promise = new Promise((resolve, reject) => {
-  		let observable = this.http.get<Array<Teacher>>("http://localhost:8080/teacher");
+  		let observable = this.http.get<Array<Teacher>>("https://sidged-be.herokuapp.com/teacher");
   		
       observable.toPromise()
   		.then(res => {
@@ -31,7 +31,7 @@ export class TeachersService {
   public update(teacher: Teacher) {
     let promise = new Promise((resolve, reject) => {
 
-      let observable = this.http.put<Teacher>("http://localhost:8080/teacher/" + teacher.id, teacher);
+      let observable = this.http.put<Teacher>("https://sidged-be.herokuapp.com/teacher/" + teacher.id, teacher);
       observable.toPromise()
         .then(res => {
           resolve(res);

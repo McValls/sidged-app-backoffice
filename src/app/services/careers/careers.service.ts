@@ -13,7 +13,7 @@ export class CareersService {
 
   public getAllCareers()  {
   	let promise = new Promise((resolve, reject) => {
-  		let observable = this.http.get<Array<Career>>("http://localhost:8080/career");
+  		let observable = this.http.get<Array<Career>>("https://sidged-be.herokuapp.com/career");
 	    observable.toPromise()
 	  		.then(res => {
 	  			resolve(res);

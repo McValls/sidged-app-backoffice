@@ -18,7 +18,7 @@ export class CoursesService {
 
   public getAllCourses()  {
   	let promise = new Promise((resolve, reject) => {
-  		let observable = this.http.get<Array<Course>>("http://localhost:8080/course");
+  		let observable = this.http.get<Array<Course>>("https://sidged-be.herokuapp.com/course");
 	    observable.toPromise()
 	  		.then(res => {
 	  			resolve(res);
@@ -40,7 +40,7 @@ export class CoursesService {
 
   private updateStudent(courseId: number, student: Student, action: string){
     return new Promise((resolve, reject) => {
-      this.http.put<Course>("http://localhost:8080/course/"+courseId+"/student?action="+action, student)
+      this.http.put<Course>("https://sidged-be.herokuapp.com/course/"+courseId+"/student?action="+action, student)
         .toPromise()
         .then(res => {
           resolve(res);
@@ -60,7 +60,7 @@ export class CoursesService {
 
   private updateTeacher(courseId: number, teacher: Teacher, action: string){
     return new Promise((resolve, reject) => {
-      this.http.put<Course>("http://localhost:8080/course/"+courseId+"/teacher?action="+action, teacher)
+      this.http.put<Course>("https://sidged-be.herokuapp.com/course/"+courseId+"/teacher?action="+action, teacher)
         .toPromise()
         .then(res => {
           resolve(res);
@@ -86,7 +86,7 @@ export class CoursesService {
     }
 
     return new Promise((resolve, reject) => {
-      this.http.post("http://localhost:8080/course", data)
+      this.http.post("https://sidged-be.herokuapp.com/course", data)
         .toPromise()
         .then(res => {
           resolve(res);
@@ -99,7 +99,7 @@ export class CoursesService {
 
   public getTeachers(courseId: number) {
     return new Promise((resolve, reject) => {
-      this.http.get<Array<Teacher>>("http://localhost:8080/course/"+courseId+"/teacher")
+      this.http.get<Array<Teacher>>("https://sidged-be.herokuapp.com/course/"+courseId+"/teacher")
         .toPromise()
         .then(
           res => {
@@ -114,7 +114,7 @@ export class CoursesService {
 
   public getStudents(courseId: number) {
     return new Promise((resolve, reject) => {
-      this.http.get<Array<Student>>("http://localhost:8080/course/"+courseId+"/student")
+      this.http.get<Array<Student>>("https://sidged-be.herokuapp.com/course/"+courseId+"/student")
         .toPromise()
         .then(
           res => {

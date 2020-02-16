@@ -11,7 +11,7 @@ export class TimesService {
 
   public getTimes() {
   	let promise = new Promise((resolve, reject) => {
-  		this.http.get<Array<Time>>("http://localhost:8080/time").toPromise()
+  		this.http.get<Array<Time>>("https://sidged-be.herokuapp.com/time").toPromise()
 	  		.then(res => {
 	  			resolve(res);
 	  		}, err => {
