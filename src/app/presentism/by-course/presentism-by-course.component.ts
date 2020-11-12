@@ -89,7 +89,7 @@ export class PresentismByCourseComponent implements OnInit {
 
   	goToAnalysis($event) {
   		this.selectedCourse = $event.data;
-		this.analysisService.getAnalysisDataByCourse(this.selectedCourse.id).subscribe(res => {
+		this.analysisService.getAnalysisDataByCourse(this.selectedCourse.code).subscribe(res => {
 
 			if(res != null){
 				this.barChartLabels = [];
@@ -99,7 +99,7 @@ export class PresentismByCourseComponent implements OnInit {
 					{data: [], label: '% Ausente', backgroundColor: 'red'},
 				]
 				res.presentismByMonth.forEach(monthData => {
-					this.barChartLabels.push("Mes " + monthData.month);
+					this.barChartLabels.push('Mes ' + monthData.month);
 					this.barChartData[0]['data'].push(
 						monthData.percentagesByMonth
 							.find(percentage => percentage.studentPresent === PresentType.PRESENT).percentage)
@@ -130,7 +130,7 @@ export class PresentismByCourseComponent implements OnInit {
 				setTimeout(() => {
 					window.scrollTo(
 						{ 
-							top: document.getElementById("chart").offsetTop,
+							top: document.getElementById('chart').offsetTop,
 							behavior: 'smooth'
 						}	
 				)}, 0);
@@ -149,7 +149,7 @@ export class PresentismByCourseComponent implements OnInit {
 	filterByCourseName(event) {
 		let coursesToFilter = this.activeFilters.size > 1? this.courses : this.allCourses;
 		this.courses = coursesToFilter.filter(course => course.name.indexOf(event.target.value) != -1);
-		if(event.target.value.trim() === "") {
+		if(event.target.value.trim() === '') {
 			this.activeFilters.delete('filterByName');
 		} else {
 			this.activeFilters.set('filterByName', true);
@@ -158,7 +158,7 @@ export class PresentismByCourseComponent implements OnInit {
 
 	filterByCourseYear(event) {
 		let coursesToFilter = this.activeFilters.size > 1? this.courses : this.allCourses;
-		if(event.target.value.trim() === ""){
+		if(event.target.value.trim() === ''){
 			this.activeFilters.delete('filterByYear');
 		} else {
 			this.courses = coursesToFilter.filter(course => course.year === event.target.value);

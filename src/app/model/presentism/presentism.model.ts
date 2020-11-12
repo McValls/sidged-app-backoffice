@@ -20,7 +20,7 @@ export enum PresentType {
 }
 
 export interface PresentismAnalysisData {
-	courseId: number;
+	courseCode: string;
 	courseName: string;
 	courseYear: number;
 	numberOfClasses: number;

@@ -10,12 +10,12 @@ export class AnalysisService {
 
   constructor(private http: HttpClient) { }
 
-  getAnalysisDataByCourse(courseId: number) {
-  	return this.http.get<CoursePresentismData>(Globals.BACKEND_HOST + "/presentism-data/course/"+courseId);
+  getAnalysisDataByCourse(courseCode: string) {
+  	return this.http.get<CoursePresentismData>(Globals.BACKEND_HOST + '/presentism-data/course/'+courseCode);
   }
 
   getAnalysisDataByStudent(userId: number) {
-    return this.http.get<PresentismAnalysisData[]>(Globals.BACKEND_HOST + "/presentism-data/student/"+userId+"/year/"+2020);
+    return this.http.get<PresentismAnalysisData[]>(Globals.BACKEND_HOST + '/presentism-data/student/'+userId+'/year/'+2020);
   }
 
 }

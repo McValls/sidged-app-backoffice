@@ -1,9 +1,9 @@
-import {Component, Inject, OnInit, Input} from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Teacher } from '../../model/teacher/teacher.model';
-import { TeachersService } from '../../services/teachers/teachers.service';
 import { CoursesService } from '../../services/courses/courses.service';
+import { TeachersService } from '../../services/teachers/teachers.service';
 
 @Component({
   selector: 'assign-teacher-dialog',
@@ -14,20 +14,17 @@ export class AssignTeacherDialogComponent implements OnInit {
 
     allTeachers: Array<Teacher> = new Array<Teacher>();
     filteredTeachers: Array<Teacher> = new Array<Teacher>();
-    loadingTable: boolean = false;
+    loadingTable = false;
     form: FormGroup;
-    courseId: number;
+    courseCode: string;
 
     constructor(public dialogRef: MatDialogRef<AssignTeacherDialogComponent>, 
     			private teachersService: TeachersService,
           private coursesService: CoursesService,
-    			@Inject(MAT_DIALOG_DATA) public data: {}) 
-    { 
-
-    }
+    			@Inject(MAT_DIALOG_DATA) public data: {}){}
 
     ngOnInit() {
-      this.courseId = this.data['courseId'];
+      this.courseCode = this.data['courseCode'];
        this.form = new FormGroup({
          lastnameFilter: new FormControl('')
        });
@@ -62,10 +59,10 @@ export class AssignTeacherDialogComponent implements OnInit {
 
     public getAssignAction() {
       return (teacher:Teacher) => {
-        this.coursesService.assignTeacher(this.courseId, teacher).then(res => {
+        this.coursesService.assignTeacher(this.courseCode, teacher).then(res => {
           this.dialogRef.close(true);
         }, err => {
-          alert("No se pudo asignar a este docente al curso solicitado.");
+          alert('No se pudo asignar a este docente al curso solicitado.');
         });
       }
     }

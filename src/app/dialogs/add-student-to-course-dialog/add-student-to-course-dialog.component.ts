@@ -16,7 +16,7 @@ export class AddStudentToCourseDialogComponent implements OnInit {
     filteredStudents: Array<Student> = new Array<Student>();
     loadingTable: boolean = false;
     form: FormGroup;
-    courseId: number;
+    courseCode: string;
 
 
   	constructor(public dialogRef: MatDialogRef<AddStudentToCourseDialogComponent>, 
@@ -28,7 +28,7 @@ export class AddStudentToCourseDialogComponent implements OnInit {
 	  }
 
 	  ngOnInit() {
-      this.courseId = this.data['courseId'];
+      this.courseCode = this.data['courseCode'];
       this.form = new FormGroup({
         lastnameFilter: new FormControl('')
       });
@@ -57,7 +57,7 @@ export class AddStudentToCourseDialogComponent implements OnInit {
 
     public getAddAction() {
       return (student:Student) => {
-        this.coursesService.addStudent(this.courseId, student).then(res => {
+        this.coursesService.addStudent(this.courseCode, student).then(res => {
           this.dialogRef.close(true);
         }, err => {
           alert("No se pudo agregar al alumno al curso solicitado.");

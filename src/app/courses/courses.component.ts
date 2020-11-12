@@ -33,8 +33,8 @@ export class CoursesComponent implements OnInit {
 
     public goToDetail($event) {
       let course: Course = $event.data;
-      this.router.navigate(['/dashboard/courses/detail/id/' 
-        + course.id
+      this.router.navigate(['/dashboard/courses/detail/code/'
+        + course.code
         + '/year/'
         + course.year
         + '/shift/'

@@ -13,8 +13,8 @@ export class CareersService {
   ){}
 
   public getAllCareers()  {
-  	let promise = new Promise((resolve, reject) => {
-  		let observable = this.http.get<Array<Career>>(Globals.BACKEND_HOST + "/career");
+  	const promise = new Promise((resolve, reject) => {
+		const observable = this.http.get<Array<Career>>(Globals.BACKEND_HOST + '/career');
 	    observable.toPromise()
 	  		.then(res => {
 	  			resolve(res);

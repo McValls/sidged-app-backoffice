@@ -18,8 +18,8 @@ export class CoursesService {
   ){}
 
   public getAllCourses()  {
-  	let promise = new Promise((resolve, reject) => {
-  		let observable = this.http.get<Array<Course>>(Globals.BACKEND_HOST + "/course");
+  	const promise = new Promise((resolve, reject) => {
+  		const observable = this.http.get<Array<Course>>(Globals.BACKEND_HOST + '/course');
 	    observable.toPromise()
 	  		.then(res => {
 	  			resolve(res);
@@ -31,17 +31,17 @@ export class CoursesService {
   	return promise;
   }
 
-  public addStudent(courseId: number, student: Student){
-    return this.updateStudent(courseId, student, "ADD");
+  public addStudent(courseCode: string, student: Student){
+    return this.updateStudent(courseCode, student, 'ADD');
   }
 
-  public removeStudent(courseId: number, student: Student){
-    return this.updateStudent(courseId, student, "REMOVE");
+  public removeStudent(courseCode: string, student: Student){
+    return this.updateStudent(courseCode, student, 'REMOVE');
   }
 
-  private updateStudent(courseId: number, student: Student, action: string){
+  private updateStudent(courseCode: string, student: Student, action: string){
     return new Promise((resolve, reject) => {
-      this.http.put<Course>(Globals.BACKEND_HOST + "/course/"+courseId+"/student?action="+action, student)
+      this.http.put<Course>(Globals.BACKEND_HOST + '/course/'+courseCode+'/student?action='+action, student)
         .toPromise()
         .then(res => {
           resolve(res);
@@ -50,18 +50,18 @@ export class CoursesService {
         });
     });
   }
-    
-  public assignTeacher(courseId: number, teacher: Teacher) {
-    return this.updateTeacher(courseId, teacher, "ADD");
+
+  public assignTeacher(courseCode: string, teacher: Teacher) {
+    return this.updateTeacher(courseCode, teacher, 'ADD');
   }
 
-  public removeTeacher(courseId: number, teacher: Teacher) {
-    return this.updateTeacher(courseId, teacher, "REMOVE");
+  public removeTeacher(courseCode: string, teacher: Teacher) {
+    return this.updateTeacher(courseCode, teacher, 'REMOVE');
   }
 
-  private updateTeacher(courseId: number, teacher: Teacher, action: string){
+  private updateTeacher(courseCode: string, teacher: Teacher, action: string){
     return new Promise((resolve, reject) => {
-      this.http.put<Course>(Globals.BACKEND_HOST + "/course/"+courseId+"/teacher?action="+action, teacher)
+      this.http.put<Course>(Globals.BACKEND_HOST + '/course/'+courseCode+'/teacher?action='+action, teacher)
         .toPromise()
         .then(res => {
           resolve(res);
@@ -72,22 +72,23 @@ export class CoursesService {
   }
 
   public createCourse(name: string, shift: Shift, year: number, periodType: PeriodType, periodNumber: number,
-    timeSinceId: number, timeUntilId: number, careerId: number, chair: string){
+    courseCode: string, timeSinceId: number, timeUntilId: number, careerCode: string, chair: string){
 
-    let data = {
-      name: name,
-      shift: shift,
-      year: year,
-      periodType: periodType,
-      periodNumber: periodNumber,
-      timeSinceId: timeSinceId,
-      timeUntilId: timeUntilId,
-      careerId: careerId,
-      chair: chair
+    const data = {
+      name,
+      shift,
+      year,
+      periodType,
+      periodNumber,
+      courseCode,
+      timeSinceId,
+      timeUntilId,
+      careerCode,
+      chair
     }
 
     return new Promise((resolve, reject) => {
-      this.http.post(Globals.BACKEND_HOST + "/course", data)
+      this.http.post(Globals.BACKEND_HOST + '/course', data)
         .toPromise()
         .then(res => {
           resolve(res);
@@ -98,9 +99,9 @@ export class CoursesService {
 
   }
 
-  public getTeachers(courseId: number) {
+  public getTeachers(courseCode: string) {
     return new Promise((resolve, reject) => {
-      this.http.get<Array<Teacher>>(Globals.BACKEND_HOST + "/course/"+courseId+"/teacher")
+      this.http.get<Array<Teacher>>(Globals.BACKEND_HOST + '/course/'+courseCode+'/teacher')
         .toPromise()
         .then(
           res => {
@@ -113,9 +114,9 @@ export class CoursesService {
     });
   }
 
-  public getStudents(courseId: number) {
+  public getStudents(courseCode: string) {
     return new Promise((resolve, reject) => {
-      this.http.get<Array<Student>>(Globals.BACKEND_HOST + "/course/"+courseId+"/student")
+      this.http.get<Array<Student>>(Globals.BACKEND_HOST + '/course/'+courseCode+'/student')
         .toPromise()
         .then(
           res => {
@@ -131,38 +132,37 @@ export class CoursesService {
   public getShift(shift: Shift){
     switch(shift) {
       case Shift.MORNING:
-        return "Mañana";
+        return 'Mañana';
       case Shift.AFTERNOON:
-        return "Tarde";
+        return 'Tarde';
       case Shift.NIGHT:
-        return "Noche";
+        return 'Noche';
     }
   }
 
   public getPeriodType(periodType: PeriodType){
     switch(periodType) {
       case PeriodType.QUARTERLY:
-        return "Cuatrimestral";
+        return 'Cuatrimestral';
       case PeriodType.BIANNUAL:
-        return "Semestral";
+        return 'Semestral';
       case PeriodType.ANNUAL:
-        return "Anual";
+        return 'Anual';
       case PeriodType.SUMMER:
-        return "De Verano";
+        return 'De Verano';
     }
   }
 
   public getPeriod(period: Period){
-    let periodString = "";
     switch(period.periodType){
       case PeriodType.QUARTERLY:
-        return "Cuatrimestre " + period.number;
+        return 'Cuatrimestre ' + period.number;
       case PeriodType.BIANNUAL:
-        return "Semestre " + period.number;
+        return 'Semestre ' + period.number;
       case PeriodType.ANNUAL:
-        return "Anual";
+        return 'Anual';
       case PeriodType.SUMMER:
-        return "Verano";
+        return 'Verano';
     }
   }
 

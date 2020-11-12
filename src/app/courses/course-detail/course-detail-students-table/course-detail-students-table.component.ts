@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Student } from '../../../model/student/student.model';
 import { CoursesService } from '../../../services/courses/courses.service';
 
@@ -11,7 +11,7 @@ export class CourseDetailStudentsTableComponent implements OnInit {
 
 	@Input() loading: boolean;
 	@Input() students: Array<Student>;
-	@Input() courseId: number;
+	@Input() courseCode: string;
 
   	constructor(private coursesService: CoursesService) { }
 
@@ -21,9 +21,9 @@ export class CourseDetailStudentsTableComponent implements OnInit {
 
 	public removeStudent(student: Student) {
   	this.loading = true;
-  	this.coursesService.removeStudent(this.courseId, student)
+  	this.coursesService.removeStudent(this.courseCode, student)
   		.then((data: Array<Student>) => {
-  			this.students = data; 
+  			this.students = data;
   			this.loading = false;
   		}, err => {
   			alert(err);

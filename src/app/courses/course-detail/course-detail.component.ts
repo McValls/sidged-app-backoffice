@@ -15,7 +15,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 export class CourseDetailComponent implements OnInit {
 
-	courseId: number;
+	courseCode: string;
 	courseYear: number;
 	courseShift: Shift;
 	courseName: string;
@@ -25,7 +25,7 @@ export class CourseDetailComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private router: Router, private coursesService: CoursesService, private dialog: MatDialog) {
-  	this.courseId = this.route.snapshot.params.id;
+  	this.courseCode = this.route.snapshot.params.code;
   	this.courseYear = this.route.snapshot.params.year;
   	this.courseShift = this.route.snapshot.params.shift;
   	this.courseName = this.route.snapshot.params.name;
@@ -38,7 +38,7 @@ export class CourseDetailComponent implements OnInit {
   }
 
   private getTeachers() {
-    this.coursesService.getTeachers(this.courseId).then(
+    this.coursesService.getTeachers(this.courseCode).then(
       (data: Array<Teacher>) => {
         this.teachers = data;
         if(this.students != null) {
@@ -51,7 +51,7 @@ export class CourseDetailComponent implements OnInit {
   }
 
   private getStudents(){
-    this.coursesService.getStudents(this.courseId).then(
+    this.coursesService.getStudents(this.courseCode).then(
       (data: Array<Student>) => {
         this.students = data;
         if (this.teachers != null) {
@@ -75,9 +75,9 @@ export class CourseDetailComponent implements OnInit {
   }
 
   public assignTeacher() {
-    let dialogRef = this.dialog.open(AssignTeacherDialogComponent, {
+    const dialogRef = this.dialog.open(AssignTeacherDialogComponent, {
       width: '600px',
-      data: {courseId: this.courseId},
+      data: {courseCode: this.courseCode},
       disableClose: true,
       hasBackdrop: true
     });
@@ -90,9 +90,9 @@ export class CourseDetailComponent implements OnInit {
   }
 
   public addStudent() {
-    let dialogRef = this.dialog.open(AddStudentToCourseDialogComponent, {
+    const dialogRef = this.dialog.open(AddStudentToCourseDialogComponent, {
       width: '600px',
-      data: {courseId: this.courseId},
+      data: {courseCode: this.courseCode},
       disableClose: true,
       hasBackdrop: true
     });
