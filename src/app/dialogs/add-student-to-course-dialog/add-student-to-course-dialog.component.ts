@@ -19,11 +19,11 @@ export class AddStudentToCourseDialogComponent implements OnInit {
     courseCode: string;
 
 
-  	constructor(public dialogRef: MatDialogRef<AddStudentToCourseDialogComponent>, 
+  	constructor(public dialogRef: MatDialogRef<AddStudentToCourseDialogComponent>,
           private coursesService: CoursesService,
           private studentsService: StudentsService,
-    			@Inject(MAT_DIALOG_DATA) public data: {}) 
-	  { 
+    			@Inject(MAT_DIALOG_DATA) public data: {})
+	  {
 
 	  }
 
@@ -61,7 +61,7 @@ export class AddStudentToCourseDialogComponent implements OnInit {
           this.dialogRef.close(true);
         }, err => {
           alert("No se pudo agregar al alumno al curso solicitado.");
-        });        
+        });
       }
     }
 

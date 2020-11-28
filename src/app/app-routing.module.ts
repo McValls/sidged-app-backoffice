@@ -18,7 +18,8 @@ const routes: Routes = [
 		{path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
 		{path: 'dashboard/users', component: UsersComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
 		{path: 'dashboard/courses', component: CoursesComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
-		{path: 'dashboard/courses/detail/code/:code/year/:year/shift/:shift/name/:name', component: CourseDetailComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
+    {path: 'dashboard/courses/detail/code/:code/year/:year/shift/:shift/name/:name', component: CourseDetailComponent,
+      canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
 		{path: 'dashboard/courses/create', component: CourseCreateComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
 		{path: 'presentism', component: PresentismComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}}
 
@@ -27,7 +28,7 @@ const routes: Routes = [
 @NgModule({
 	imports: [
     RouterModule.forRoot(routes)
-    ],	
+    ],
   	exports: [ RouterModule ]
 })
 export class AppRoutingModule {

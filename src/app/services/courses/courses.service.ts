@@ -41,7 +41,7 @@ export class CoursesService {
 
   private updateStudent(courseCode: string, student: Student, action: string){
     return new Promise((resolve, reject) => {
-      this.http.put<Course>(Globals.BACKEND_HOST + '/course/'+courseCode+'/student?action='+action, student)
+      this.http.put<Course>(Globals.BACKEND_HOST + '/student/course/'+courseCode+'?action='+action, student)
         .toPromise()
         .then(res => {
           resolve(res);
@@ -61,7 +61,7 @@ export class CoursesService {
 
   private updateTeacher(courseCode: string, teacher: Teacher, action: string){
     return new Promise((resolve, reject) => {
-      this.http.put<Course>(Globals.BACKEND_HOST + '/course/'+courseCode+'/teacher?action='+action, teacher)
+      this.http.put<Course>(Globals.BACKEND_HOST + '/teacher/course/'+courseCode+'?action='+action, teacher)
         .toPromise()
         .then(res => {
           resolve(res);
@@ -101,7 +101,7 @@ export class CoursesService {
 
   public getTeachers(courseCode: string) {
     return new Promise((resolve, reject) => {
-      this.http.get<Array<Teacher>>(Globals.BACKEND_HOST + '/course/'+courseCode+'/teacher')
+      this.http.get<Array<Teacher>>(Globals.BACKEND_HOST + '/teacher/course/'+courseCode)
         .toPromise()
         .then(
           res => {
@@ -116,7 +116,7 @@ export class CoursesService {
 
   public getStudents(courseCode: string) {
     return new Promise((resolve, reject) => {
-      this.http.get<Array<Student>>(Globals.BACKEND_HOST + '/course/'+courseCode+'/student')
+      this.http.get<Array<Student>>(Globals.BACKEND_HOST + '/student/course/'+courseCode)
         .toPromise()
         .then(
           res => {

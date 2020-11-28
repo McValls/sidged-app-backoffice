@@ -11,9 +11,9 @@ import { DesertorsService } from '../services/desertors/desertors.service';
 })
 export class DashboardComponent implements OnInit {
 
-  loading: boolean = false;  
+  loading: boolean = false;
 
-  constructor(private loginService: LoginService, 
+  constructor(private loginService: LoginService,
     private desertorService: DesertorsService,
     private router: Router) { }
 
@@ -36,11 +36,11 @@ export class DashboardComponent implements OnInit {
     this.loading = true;
     this.desertorService.forceDesertorsMail().subscribe(res => {
       this.loading = false;
-      alert("Se ha enviado el correo correspondiente.");
+      alert('Se ha enviado el correo correspondiente.');
     }, err => {
       this.loading = false
       console.log(err);
-      alert("No se pudo enviar el correo. Pruebe nuevamente más tarde.");
+      alert('No se pudo enviar el correo. Pruebe nuevamente más tarde.');
     });
   }
 

@@ -70,7 +70,6 @@ export class CourseCreateComponent implements OnInit {
 	private getPeriodTypes() {
 		this.periodTypes = new Array<PeriodType>();
 		this.periodTypes.push(PeriodType.QUARTERLY);
-		this.periodTypes.push(PeriodType.BIANNUAL);
 		this.periodTypes.push(PeriodType.ANNUAL);
 		this.periodTypes.push(PeriodType.SUMMER);
 	}
