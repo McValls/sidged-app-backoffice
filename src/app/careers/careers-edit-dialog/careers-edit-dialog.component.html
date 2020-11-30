@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Edición de Carrera</h2>
+<div mat-dialog-content>
+	<form [formGroup]="form">
+		<div class="form-row">
+			<div class="form-group col-md-12">
+				<label for="name">Nombre:</label>
+				<input type="text" class="form-control" id="name" formControlName="name">
+				<errors [field]="formName"></errors>
+			</div>
+		</div>
+
+		<div mat-dialog-actions>
+		  <button class="btn btn-success" mat-button (click)="updateCareer()" cdkFocusInitial>Aceptar</button>
+		</div>
+	</form>
+</div>

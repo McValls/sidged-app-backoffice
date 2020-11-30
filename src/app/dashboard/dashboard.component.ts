@@ -24,6 +24,10 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/dashboard/users']);
   }
 
+  openCareers() {
+    this.router.navigate(['/dashboard/careers']);
+  }
+
   openCourses() {
   	this.router.navigate(['/dashboard/courses']);
   }

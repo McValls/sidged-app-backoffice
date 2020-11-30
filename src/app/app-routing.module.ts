@@ -1,3 +1,4 @@
+import { CareersComponent } from './careers/careers.component';
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } 		from './app.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
     {path: 'dashboard/courses/detail/code/:code/year/:year/shift/:shift/name/:name', component: CourseDetailComponent,
       canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
 		{path: 'dashboard/courses/create', component: CourseCreateComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
-		{path: 'presentism', component: PresentismComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}}
+    {path: 'presentism', component: PresentismComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}},
+    {path: 'dashboard/careers', component: CareersComponent, canActivate: [AuthGuard], data: {roles: ['BACKOFFICE']}}
 
 ];
 

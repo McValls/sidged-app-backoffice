@@ -1,3 +1,4 @@
+import { CareersCreateDialogComponent } from './careers/careers-create-dialog/careers-create-dialog.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -38,6 +39,9 @@ import { CourseCreateComponent } from './courses/course-create/course-create.com
 import { PresentismByCourseComponent } from './presentism/by-course/presentism-by-course.component';
 import { PresentismByStudentComponent } from './presentism/by-student/presentism-by-student.component';
 import { PresentismComponent } from './presentism/presentism/presentism.component';
+import { CareersComponent } from './careers/careers.component';
+import { CareersTableComponent } from './careers/careers-table/careers-table.component';
+import { CareersEditDialogComponent } from './careers/careers-edit-dialog/careers-edit-dialog.component';
 
 
 @NgModule({
@@ -64,7 +68,11 @@ import { PresentismComponent } from './presentism/presentism/presentism.componen
     CourseCreateComponent,
     PresentismByCourseComponent,
     PresentismByStudentComponent,
-    PresentismComponent
+    PresentismComponent,
+    CareersComponent,
+    CareersTableComponent,
+    CareersCreateDialogComponent,
+    CareersEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +90,9 @@ import { PresentismComponent } from './presentism/presentism/presentism.componen
   entryComponents: [
     EditUserDialogComponent,
     AssignTeacherDialogComponent,
-    AddStudentToCourseDialogComponent
+    AddStudentToCourseDialogComponent,
+    CareersCreateDialogComponent,
+    CareersEditDialogComponent
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
