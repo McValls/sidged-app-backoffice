@@ -20,7 +20,7 @@ export class EditUserDialogComponent implements OnInit {
 	userType: UserType;
 	user: any;
 
-    constructor(public dialogRef: MatDialogRef<EditUserDialogComponent>, 
+    constructor(public dialogRef: MatDialogRef<EditUserDialogComponent>,
     	private teachersService: TeachersService,
     	private studentsService: StudentsService,
     @Inject(MAT_DIALOG_DATA) public data: {}) { }
@@ -38,8 +38,8 @@ export class EditUserDialogComponent implements OnInit {
     	this.formNames.setValue(this.user.names);
     	this.formLastname.setValue(this.user.lastname);
     	this.formEmail.setValue(this.user.contactData.emails);
-    	if(this.userType == UserType.STUDENT) {
-    		this.formIdentificationNumber.setValue(this.user.identificationNumber); 	
+    	if(this.userType === UserType.STUDENT) {
+    		this.formIdentificationNumber.setValue(this.user.identificationNumber);
     	}
     }
 
@@ -47,21 +47,21 @@ export class EditUserDialogComponent implements OnInit {
     	this.user.names = this.formNames.value;
     	this.user.lastname = this.formLastname.value;
     	this.user.identificationNumber = this.formIdentificationNumber.value;
-    	this.user.contactData.emails = this.formEmail.value.toString().split(",	");
+    	this.user.contactData.emails = this.formEmail.value.toString().split(',	');
 
     	if(this.userType == UserType.STUDENT) {
     		this.studentsService.update(this.user as Student)
     			.then(data => {
     				this.dialogRef.close(data);
     			}, err => {
-    				alert("Ha ocurrido un error: " + JSON.stringify(err));
+    				alert('Ha ocurrido un error: ' + JSON.stringify(err));
     			});
     	} else {
     		this.teachersService.update(this.user as Teacher)
     			.then(data => {
     				this.dialogRef.close(data);
     			}, err => {
-    				alert("Ha ocurrido un error: " + JSON.stringify(err));
+    				alert('Ha ocurrido un error: ' + JSON.stringify(err));
     			});
     	}
     }
