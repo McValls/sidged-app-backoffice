@@ -1,0 +1,54 @@
+<div class="container col-md-12">
+	<h2> Dashboard </h2>
+	<hr>
+
+  	<div class="form-group form-centered">
+  		<h6>ABMs</h6>
+  		<hr>
+  		<div class="form-row">
+  			<div class="col-md-6">
+		  		<button type="button" class="btn btn-primary btn-lg col-lg-6" (click)="openUsers()">ABM Usuarios</button>
+        </div>
+        <div class="col-md-6">
+		  		<button type="button" class="btn btn-primary btn-lg col-lg-6" (click)="openCareers()">ABM Carreras</button>
+		  	</div>
+		  	<div class="col-md-6">
+		  		<button type="button" class="btn btn-primary btn-lg col-lg-6" (click)="openCourses()">ABM Cursos</button>
+		  	</div>
+        <div class="col-md-6">
+            <button type="button" class="btn btn-primary btn-lg col-lg-6" (click)="openSubjects()()">ABM Asignaturas</button>
+        </div>
+      </div>
+	  	<hr>
+		<!-- TODO
+		<div class="form-row">
+		  	<div class="col-md-6">
+		  		<button type="button" class="btn btn-primary btn-lg col-lg-6">Estado Académico (Alumnos)</button>
+		  	</div>
+		</div>
+		<-->
+	  	<div class="form-row">
+			<div class="col-md-6">
+				<button type="button" class="btn btn-primary btn-lg col-lg-6" (click)="openPresentismByCourse()">Análisis de Presentismo</button>
+			</div>
+			<div class="col-md-6">
+				<button type="button" class="btn btn-primary btn-lg col-lg-6" (click)="forceUpdateDesertors()">Mandar mail de desertores</button>
+			</div>
+			<!-- TODO
+		  	<div class="col-md-6">
+		  		<button type="button" class="btn btn-primary btn-lg col-lg-6">Análisis de Decersión</button>
+			</div>
+			-->
+	  	</div>
+	  	<div class="form-row">
+	  		<div class="col-md-6">
+		  		<button type="button" class="btn btn-primary btn-lg col-lg-6">Contactar a un Alumno <i>(próximamente)</i></button>
+		  	</div>
+		  	<div class="col-md-6">
+		  		<button type="button" class="btn btn-primary btn-lg col-lg-6">Encuestas <i>(próximamente)</i></button>
+		  	</div>
+		</div>
+		<loading [loading]="loading" [fullScreen]="true"></loading>
+  	</div>
+
+</div>

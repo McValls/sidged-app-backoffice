@@ -3,8 +3,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Student } from '../../model/student/student.model';
 import { Teacher } from '../../model/teacher/teacher.model';
-import { UserType } from '../../model/user-type';
-import { UserData } from '../../model/user-data.model';
+import { UserType } from '../../model/user/user-type';
+import { UserData } from '../../model/user/user-data.model';
 import { TeachersService } from '../../services/teachers/teachers.service';
 import { StudentsService } from '../../services/students/students.service';
 

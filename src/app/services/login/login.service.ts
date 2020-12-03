@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { UserData }	from '../../model/user-data.model';
+import { UserData }	from '../../model/user/user-data.model';
 import { Observable } from 'rxjs';
 import { SharingDataService } from '../local-storage/sharing-data.service';
 import { Globals } from '../Globals';
@@ -24,7 +24,7 @@ export class LoginService {
       .then(
         (res: HttpResponse<UserData>) => {
           let headers = res.headers;
-          this.sharingDataService.storeToken(headers.get("Authorization"));  
+          this.sharingDataService.storeToken(headers.get("Authorization"));
           this.loggedUser = res.body;
           this.sharingDataService.storeLoggedUser(this.loggedUser);
           resolve();
