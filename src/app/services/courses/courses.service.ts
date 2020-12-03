@@ -72,7 +72,7 @@ export class CoursesService {
   }
 
   public createCourse(name: string, shift: Shift, year: number, periodType: PeriodType, periodNumber: number,
-    courseCode: string, timeSinceId: number, timeUntilId: number, careerCode: string, chair: string){
+    courseCode: string, timeSinceId: number, timeUntilId: number, subjectCode: string, chair: string){
 
     const data = {
       name,
@@ -83,7 +83,7 @@ export class CoursesService {
       courseCode,
       timeSinceId,
       timeUntilId,
-      careerCode,
+      subjectCode,
       chair
     }
 

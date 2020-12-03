@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SignUpData } from '../../rest/sign-up-data';
+import { SignUpData } from '../../model/user/sign-up-data';
 import { Globals } from '../Globals';
 
 @Injectable({

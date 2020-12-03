@@ -1,0 +1,88 @@
+<div class="container col-sm-12">
+	<h2> Nuevo curso </h2>
+
+  	<form [formGroup]="form">
+	  	<div class="container form-group">
+	  		<h6 class="header">Curso</h6>
+	  		<hr>
+
+	  		<div class="form-row">
+	  			<div class="form-group col-md-6">
+		  			<label for="name">Nombre curso:</label>
+					<input type="text" class="form-control" id="name" formControlName="name">
+					<errors [field]="formName"></errors>
+				</div>
+        <div class="form-group col-md-4">
+          <label for="subjectCode">Asignatura:</label>
+          <select id="subjectCode" class="form-control" formControlName="subjectCode">
+            <option *ngFor="let subject of subjects" [value]="subject.code">{{subject.name + ' - ' + subject.careerName}}</option>
+          </select>
+          <errors [field]="formSubjectCode"></errors>
+        </div>
+        <div class="form-group col-md-2">
+		  			<label for="year">Año:</label>
+					<input type="text" class="form-control" id="year" formControlName="year">
+					<errors [field]="formYear"></errors>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+		  			<label for="periodType">Tipo de cursada:</label>
+		  			<select id="periodType" class="form-control" formControlName="periodType">
+		  				<option *ngFor="let periodType of periodTypes" [value]="periodType">{{getPeriod(periodType)}}</option>
+		  			</select>
+		  			<errors [field]="formPeriodType"></errors>
+		  		</div>
+		  		<div class="form-group col-md-1" *ngIf="mustHavePeriodNumber()">
+		  			<label for="periodNumber">Número:</label>
+					<input type="text" class="form-control" id="periodNumber" formControlName="periodNumber">
+					<errors [field]="formPeriodNumber"></errors>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="courseCode">Código del curso:</label>
+					<input type="text" class="form-control" id="courseCode" formControlName="courseCode">
+					<errors [field]="formCourseCode"></errors>
+				</div>
+			</div>
+
+			<h6 class="header">Horario</h6>
+	  		<hr>
+
+			<div class="form-row">
+				<div class="form-group col-md-3">
+		  			<label for="shift">Turno:</label>
+		  			<select id="shift" class="form-control" formControlName="shift">
+		  				<option *ngFor="let shift of shifts" [value]="shift">{{getShift(shift)}}</option>
+		  			</select>
+		  			<errors [field]="formShift"></errors>
+		  		</div>
+		  		<div class="form-group col-md-2">
+		  			<label for="timeSinceId">Desde (hs):</label>
+		  			<select id="timeSinceId" class="form-control" formControlName="timeSinceId">
+		  				<option *ngFor="let time of timesSince" [value]="time.id">{{time.since}}</option>
+		  			</select>
+		  			<errors [field]="formTimeSince"></errors>
+		  		</div>
+		  		<div class="form-group col-md-2">
+		  			<label for="timeUntilId">Hasta (hs):</label>
+		  			<select id="timeUntilId" class="form-control" formControlName="timeUntilId">
+		  				<option *ngFor="let time of timesUntil" [value]="time.id">{{time.until}}</option>
+		  			</select>
+		  			<errors [field]="formTimeUntil"></errors>
+		  		</div>
+
+			</div>
+
+			<div class="form-row">
+				<div class="col-md-6 left-col">
+			  		<button type="button" class="btn btn-secondary btn-md col-md-6" (click)="backToCourses()">Volver</button>
+			  	</div>
+	  			<div class="col-md-6 right-col">
+			  		<button type="button" class="btn btn-success btn-lg col-lg-6" (click)="createCourse()">Crear curso</button>
+			  	</div>
+		  	</div>
+	  	</div>
+	</form>
+  	<loading [loading]="loading" [fullScreen]="true"></loading>
+
+</div>

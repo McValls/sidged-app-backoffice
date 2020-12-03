@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Creación de Asignatura</h2>
+<div mat-dialog-content>
+	<form [formGroup]="form">
+		<div class="form-row">
+      <div class="form-group col-md-12">
+				<label for="code">Código:</label>
+				<input type="text" class="form-control" id="code" formControlName="code">
+				<!-- <errors [field]="formCode"></errors> -->
+      </div>
+    </div>
+    <div class="form-row">
+			<div class="form-group col-md-12">
+				<label for="name">Nombre:</label>
+				<input type="text" class="form-control" id="name" formControlName="name">
+				<!--<errors [field]="formName"></errors>-->
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="careerCode">Carrera:</label>
+        <select id="careerCode" class="form-control" formControlName="careerCode">
+          <option *ngFor="let career of careers" [value]="career.code">{{career.name}}</option>
+        </select>
+        <!-- <errors [field]="formCareerCode"></errors> -->
+      </div>
+		</div>
+
+		<div mat-dialog-actions>
+		  <button class="btn btn-success" mat-button (click)="createSubject()" cdkFocusInitial>Aceptar</button>
+		</div>
+	</form>
+</div>

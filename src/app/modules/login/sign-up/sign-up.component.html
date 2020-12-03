@@ -1,0 +1,87 @@
+<div class="container col-sm-12">
+	<h2> Registrar usuario </h2>
+
+  	<form [formGroup]="form">
+	  	<div class="container form-group">
+	  		<h6 class="header">Usuario</h6>
+	  		<hr>
+	  		<div class="form-row">
+	  			<div class="form-group col-md-4">
+		  			<label for="userType">Tipo de Usuario:</label>
+		  			<select id="userType" class="form-control col-md-4" formControlName="userType">
+		  				<option *ngFor="let userType of userTypes" [value]="userType">{{getUserTypeLabel(userType)}}</option>
+		  			</select>
+		  		</div>
+	  		</div>
+
+	  		<div class="form-row">
+	  			<div class="form-group col-md-4">
+		  			<label for="user">Nombre usuario</label>
+					<input type="text" class="form-control" id="user" formControlName="user">
+					<errors [field]="formUser"  [minLength]="4"></errors>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="password">Password:</label>
+					<input type="password" class="form-control" id="password" formControlName="password">
+					<errors [field]="formPassword" [minLength]="8" [maxLength]="16"></errors>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="confirmPassword">Confirmar Password:</label>
+					<input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+					<errors [field]="formConfirmPassword" [minLength]="8" [maxLength]="16"></errors>
+				</div>
+			</div>
+
+			<h6 class="header">Datos Personales</h6>
+	  		<hr>
+	  		<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="names">Nombres:</label>
+					<input type="text" class="form-control" id="names" formControlName="names">
+					<errors [field]="formNames"></errors>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="lastname">Apellido:</label>
+					<input type="text" class="form-control" id="lastname" formControlName="lastname">
+					<errors [field]="formLastname"></errors>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="identificationNumber">Número Documento:</label>
+					<input type="text" class="form-control" id="identificationNumber" formControlName="identificationNumber">
+					<errors [field]="formIdentificationNumber"></errors>
+				</div>
+			</div>
+
+			<h6 class="header">Datos de Contacto</h6>
+	  		<hr>
+	  		<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="email">Email:</label>
+					<input type="text" class="form-control" id="email" formControlName="email">
+					<errors [field]="formEmail"></errors>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="confirmEmail">Confirmar Email:</label>
+					<input type="text" class="form-control" id="confirmEmail" formControlName="confirmEmail">
+					<errors [field]="formConfirmEmail"></errors>
+				</div>
+			</div>
+			<div *ngIf="form.errors?.notSamePasswd && (form.touched || form.dirty)" class="cross-validation-error-message alert alert-danger">
+			    Las contraseñas deben coincidir
+			</div>
+			<div *ngIf="form.errors?.notSameEmail && (form.touched || form.dirty)" class="cross-validation-error-message alert alert-danger">
+			    Los email deben coincidir
+			</div>
+			<div class="form-row">
+				<div class="col-md-6 left-col">
+			  		<button type="button" class="btn btn-secondary btn-md col-md-6" (click)="backToUsers()">Volver</button>
+			  	</div>
+	  			<div class="col-md-6 right-col">
+			  		<button type="button" class="btn btn-success btn-lg col-lg-6" (click)="confirm()">Confirmar</button>
+			  	</div>
+		  	</div>
+	  	</div>
+	</form>
+  	<loading [loading]="loading" [fullScreen]="true"></loading>
+
+</div>

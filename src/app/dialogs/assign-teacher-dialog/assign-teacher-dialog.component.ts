@@ -18,7 +18,7 @@ export class AssignTeacherDialogComponent implements OnInit {
     form: FormGroup;
     courseCode: string;
 
-    constructor(public dialogRef: MatDialogRef<AssignTeacherDialogComponent>, 
+    constructor(public dialogRef: MatDialogRef<AssignTeacherDialogComponent>,
     			private teachersService: TeachersService,
           private coursesService: CoursesService,
     			@Inject(MAT_DIALOG_DATA) public data: {}){}
